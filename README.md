@@ -31,7 +31,7 @@ module "terraform-aws-lamda-sg-cloudfront-updater" {
     aws.sns     = "aws.sns"
   }
 }
-
+```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 
