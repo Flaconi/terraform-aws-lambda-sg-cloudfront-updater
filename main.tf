@@ -57,12 +57,6 @@ resource "aws_iam_role_policy" "this" {
   policy = data.aws_iam_policy_document.lambda_policy.json
 }
 
-data "archive_file" "this" {
-  type        = "zip"
-  source_file = "${path.module}/zip/index.py"
-  output_path = "${path.module}/lambda.zip"
-}
-
 # -------------------------------------------------------------------------------------------------
 # Prepare the dummy archive
 # -------------------------------------------------------------------------------------------------
