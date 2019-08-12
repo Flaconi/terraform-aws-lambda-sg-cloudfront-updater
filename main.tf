@@ -89,7 +89,7 @@ resource "aws_lambda_function" "this" {
   role             = aws_iam_role.this.arn
   runtime          = "python2.7"
   timeout          = 60
-	lifecycle {
+  lifecycle {
     ignore_changes = ["filename", "last_modified"]
   }
 }
