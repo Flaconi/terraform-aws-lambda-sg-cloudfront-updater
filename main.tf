@@ -63,6 +63,24 @@ data "archive_file" "this" {
   output_path = "${path.module}/lambda.zip"
 }
 
+# -------------------------------------------------------------------------------------------------
+# Prepare the dummy archive
+# -------------------------------------------------------------------------------------------------
+data "archive_file" "this" {
+  type        = "zip"
+  output_path = "${path.module}/lambda.zip"
+
+  source {
+    content = <<EOF
+exports.handler = function (input, context) {
+    console.log("placeholder");
+}
+EOF
+
+    filename = "index.js"
+  }
+}
+
 resource "aws_lambda_function" "this" {
   function_name    = "UpdateCloudFrontIps"
   filename         = "${path.module}/lambda.zip"
@@ -71,6 +89,9 @@ resource "aws_lambda_function" "this" {
   role             = aws_iam_role.this.arn
   runtime          = "python2.7"
   timeout          = 60
+	lifecycle {
+    ignore_changes = ["filename", "last_modified"]
+  }
 }
 
 resource "aws_lambda_permission" "with_sns" {
