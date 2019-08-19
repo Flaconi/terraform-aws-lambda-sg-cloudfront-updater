@@ -96,10 +96,4 @@ resource "aws_lambda_permission" "with_sns" {
   source_arn    = "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged"
 }
 
-
-resource "aws_sns_topic_subscription" "this" {
-  provider  = "aws.sns"
-  topic_arn = "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged"
-  protocol  = "lambda"
-  endpoint  = aws_lambda_function.this.arn
-}
+# aws_sns_topic_subscription will have to be created with a different module in us-east-1
