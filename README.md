@@ -23,7 +23,11 @@ module "terraform-aws-lamda-sg-cloudfront-updater" {
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Outputs
 
+| Name | Description |
+|------|-------------|
+| this\_aws\_lambda\_function\_arn | The arn of the lambda |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
