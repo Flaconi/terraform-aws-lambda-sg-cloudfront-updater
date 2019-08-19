@@ -1,11 +1,3 @@
-provider "aws" {
-  alias = "default"
-}
-
-provider "aws" {
-  alias = "sns"
-}
-
 data "aws_iam_policy_document" "lambda_trust_policy" {
   statement {
     actions = ["sts:AssumeRole"]
