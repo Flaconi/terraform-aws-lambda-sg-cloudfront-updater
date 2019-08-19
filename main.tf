@@ -68,7 +68,7 @@ EOF
 }
 
 resource "aws_lambda_function" "this" {
-  function_name    = "UpdateCloudFrontIps"
+  function_name    = var.name
   filename         = "${path.module}/lambda.zip"
   source_code_hash = data.archive_file.this.output_base64sha256
   handler          = "index.lambda_handler"

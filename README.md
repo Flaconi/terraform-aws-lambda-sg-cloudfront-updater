@@ -23,6 +23,12 @@ module "terraform-aws-lamda-sg-cloudfront-updater" {
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| name | The name of the lambda function | string | n/a | yes |
+
 ## Outputs
 
 | Name | Description |
