@@ -4,4 +4,5 @@ provider "aws" {
 
 module "terraform-aws-lamda-sg-cloudfront-updater" {
   source = "../../"
+  name   = "functioname"
 }
