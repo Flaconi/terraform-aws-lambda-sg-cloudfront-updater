@@ -67,13 +67,12 @@ EOF
 }
 
 resource "aws_lambda_function" "this" {
-  function_name    = var.name
-  filename         = "${path.module}/lambda.zip"
-  source_code_hash = data.archive_file.this.output_base64sha256
-  handler          = "main.lambda_handler"
-  role             = aws_iam_role.this.arn
-  runtime          = "python2.7"
-  timeout          = 60
+  function_name = var.name
+  filename      = "${path.module}/lambda.zip"
+  handler       = "main.lambda_handler"
+  role          = aws_iam_role.this.arn
+  runtime       = "python2.7"
+  timeout       = 60
   lifecycle {
     ignore_changes = ["filename", "last_modified"]
   }
