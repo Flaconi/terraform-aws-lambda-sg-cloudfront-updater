@@ -58,23 +58,21 @@ data "archive_file" "this" {
 
   source {
     content = <<EOF
-exports.handler = function (input, context) {
-    console.log("placeholder");
-}
+def lambda_handler(event, context):
+  print("placeholder")
 EOF
 
-    filename = "index.js"
+    filename = "main.py"
   }
 }
 
 resource "aws_lambda_function" "this" {
-  function_name    = var.name
-  filename         = "${path.module}/lambda.zip"
-  source_code_hash = data.archive_file.this.output_base64sha256
-  handler          = "index.lambda_handler"
-  role             = aws_iam_role.this.arn
-  runtime          = "python2.7"
-  timeout          = 60
+  function_name = var.name
+  filename      = "${path.module}/lambda.zip"
+  handler       = "main.lambda_handler"
+  role          = aws_iam_role.this.arn
+  runtime       = "python2.7"
+  timeout       = 60
   lifecycle {
     ignore_changes = ["filename", "last_modified"]
   }
